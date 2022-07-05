@@ -3,7 +3,6 @@
 ##### Part2 - [기본연산자(Basic Operators)](https://github.com/Isselgun/study/blob/main/Part2/README.md)
 ##### Part3 - [프로그래밍의 기본 원리와 조건문 (Control Flow)]()
 ##### Part4 - [튜플(Tuple)]()
-##### Part4 - [튜플(Tuple)]()
 ##### Part6 - [반복문]()
 ##### Part7 - [함수(Function)]()
 ##### Part8 - [옵셔널(Optional)]()
