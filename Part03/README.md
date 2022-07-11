@@ -108,7 +108,7 @@ default:
 }
 ```
 
-- Switch문의 매칭값에는 비교연사자를 넣으면 안되며, 범위 연산자를 이용해야합니다. 
+- Switch문의 매칭값에는 비교연산자를 넣으면 안되며, 범위 연산자를 이용해야합니다. 
 ```Swift
 switch num1 {
 case < 10 :
@@ -120,14 +120,78 @@ default:
 ```
 
 
-# switch문의 활용
+# switch문의 활용(바인딩, where)
 
+#### switch문에 바인딩 : 
+- switch문에 바인딩을 이용할 수 있습니다. 
+```Swift
+switch num {
+case let a:     // 바인딩
+  print("숫자: \(a)")
+default:
+  break
+}
+```
+- swich문에서 where절을 사용하여 바인딩후 조건을 확인 할 수 있습니다. 이경우 비교연산자 사용가능
+```Swift
+switch num {
+case let x where x % 2 == 0:     // 바인딩 후 where절을 이용하여 조건 확인
+  print("짝수 숫자: \(x)")
+case let x where x % 2 != 0:     // 바인딩 후 where절을 이용하여 조건 확인
+  print("홀수 숫자: \(x)")
+default:
+  break
+}
+```
 
 
 # 연습문제 / 가위바위보 게임 만들기 / 랜덤 빙고 게임 만들기
 
+#### 가위바위보 게임 만들기
+> 가위/바위/보 게임을 if문을 사용해서 구현해 봅니다. 컴퓨터는 가위, 바위, 보 중에서 랜덤(무작위)으로 선택하게 되고, 당신은 한가지를 고릅니다. 
+그리고 결과적으로 "무승부입니다.", "당신은 졌습니다.", "당신은 이겼습니다." 이 셋 중에 한가지가 출력되도록 합니다.
+
+> tip. 가위는 정수 0, 바위는 정수 1, 보는 정수 2와 같다고 생각하면 됩니다. 랜덤으로 숫자를 뽑는 방법은 Int.random(in: 0...2). (if문을 중첩하여 사용하는 것도 좋습니다.)
+
+
+```Swift
+var a: Int = 2
+var randomInt: Int = Int.random(in: 0...2)
+
+if a == randomInt {
+    print("무승부입니다.")
+} else if a == 0 && randomInt == 2 {
+    print("당신은 이겼습니다.")
+} else if a == 1 && randomInt == 0 {
+    print("당신은 이겼습니다.")
+} else if a == 2 && randomInt == 1 {
+    print("당신은 이겼습니다.")
+} else {
+    print("당신은 졌습니다.")
+}
+```
+
+#### 랜덤 빙고 게임 만들기
+> 컴퓨터가 1부터 10사이의 정수에서 랜덤 값을 선택하고, 저장하도록 합니다. 그리고 당신은 1부터 10사이의 정수를 선택합니다. 컴퓨터가 선택한 랜덤값과 당신의 값을 비교하고 당신의 숫자가 더 높은 경우는 "Down", 당신의 숫자가 더 낮은 경우는 "Up", 당신의 숫자와 동일한 경우 "Bingo"가 출력되도록 합니다. 
+
+> tip. 랜덤으로 숫자를 뽑는 방법은 Int.random(in: 1...10)
+
+
+```Swift
+var system1: Int = Int.random(in: 1...10)
+var you: Int = 10
+
+if you == system1 {
+    print("Bingo")
+}
+else if you > system1 {
+    print("Down")
+}
+else {
+    print("Up")
+}
+```
 
 
 
-단축키
-컨트롤 i 자동 줄맞춤
+
