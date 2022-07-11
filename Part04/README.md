@@ -38,7 +38,12 @@ c       // 3
 typealias GridPoint = (Int,Int)
 ```
 
-- 튜플의 값
+- 튜플의 값을 비교할 수 있습니다. 기본적으로 첫번째 자리 값을 서로 비교하며, 첫번째 값이 같을경우 다음 값을 비교합니다.
+(1, "zebra") < (2, "apple")   // true
+(3, "apple") < (3, "bird")    // true 문자열은 앞에 문자를 비교합니다. a < b
+
+("blue", -1) < ("purple", 1)            // true
+("blue", false) < ("purple", true)    // 에러 Bool 값은 비교 불가능 합니다. 
 
 
 # 튜플의 활용
