@@ -48,3 +48,60 @@ typealias GridPoint = (Int,Int)
 ```
 
 # 튜플의 활용
+
+#### 조건문과 함께 사용 :
+- if문 사용 예제 
+```Swift
+if iOS.0 == "Swift" && iOS.1 == "5" {
+    print("스위프트 버전 5입니다.")
+}
+
+if iOS == ("Swift", "5") {
+    print("스위프트 버전 5입니다.")
+}
+
+```
+- switch문 사용 예제
+```Swift
+switch iOS {
+case ("Swift", "5"):
+    print("스위프트 버전 5입니다.")
+case ("Swift", "4"):
+    print("스위프트 버전 4입니다.")
+default:
+    break
+}
+```
+
+
+#### 바인딩하여 사용 : 
+- 바인딩 사용 예제 
+```Swift
+var coordinate = (0, 5)   // 좌표계
+
+switch coordinate {
+case (let distance, 0), (0, let distance):   // x축이나 y축에 있으면 출력하라는 코드. 
+    print("X 또는 Y축 위에 위치하며, \(distance)만큼의 거리가 떨어져 있음")
+default:
+    print("축 위에 있지 않음")
+}
+
+// X 또는 Y축 위에 위치하며, 5만큼의 거리가 떨어져 있음
+```
+- 바인딩과 where절 활용
+```
+coordinate = (5, 0)
+
+switch coordinate {
+case (let x, let y) where x == y:      //각각 x와 y의 상수로 바인딩해줍니다. 그후 where의 조건문을 확인합니다. 
+    print("(\(x), \(y))의 좌표는 y = x 1차함수의 그래프 위에 있다.")
+    
+case let (x, y) where x == -y:
+    print("(\(x), \(y))의 좌표는 y = -x 1차함수의 그래프 위에 있다.")
+    
+case let (x, y):
+    print("(\(x), \(y))의 좌표는 y = x, 또는 y = -x 그래프가 아닌 임의의 지점에 있다.")
+}
+// (5, 0)의 좌표는 y = x, 또는 y = -x 그래프가 아닌 임의의 지점에 있다.
+```
+
