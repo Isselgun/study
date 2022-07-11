@@ -92,7 +92,7 @@ true || false   // true
 삼항
 할당 ⭐ 
 ```
-[공식문서](https://developer.apple.com/documentation/swift/operator-declarations)
+[연산의 우선순위 공식문서](https://developer.apple.com/documentation/swift/operator-declarations)
 
 #### 접근 연산자란 :
 ```Swift
