@@ -58,7 +58,46 @@ print(i)                // Rain이 출력됩니다.
 
 #### while문 이란 : 
 - while 조건문 {실행문}의 형식으로 사용합니다. 조건은 True일경우에만 실행됩니다. 
-- while의 실행문에는 조건을 변화시키는 문장을 넣어야 합니다. 
+- while의 실행문에는 조건을 변화시키는 문장을 넣어야 합니다. 조건을 변화시키지 않을시 무한루프가 될수 있습니다. 
+```Swift
+var sum = 0
+var num = 1
+while num <= 50 { 
+    sum += num
+    num += 1     
+}
+print("총 합의 출력: ", sum)       // 1275
+
+
+while num <= 50 {   
+    sum += num
+    // num += 1      // 조건문을 변화시키지 않으면 무한반복, 무한루프 하게 됩니다.
+}
+print("총 합의 출력: ", sum)
+```
+
+#### repeat-while문 이란 :
+- 조건문의 참거짓에 상관없이 1번 실행이 됩니다. 그후 조건문이 참이라면 반복하는 문장을 의미합니다.
+```Swift
+var sum = 0
+var num = 1
+
+repeat {   
+    sum += num
+    num += 1    
+} while num <= 50 
+print("총 합의 출력: ", sum)       // 1275
+
+
+var sum = 0
+var num = 50
+repeat {   
+    sum += num
+    num += 1    
+} while num <= 50 
+print("num : ", num)            // num : 51    조건과 관계없이 1번 실행됩니다.
+print("총 합의 출력: ", sum)
+```
 
 # 반복문의 제어전송문 (continue / break)
 
