@@ -51,7 +51,7 @@ var i = "Rain"
 for i in (1...10) {
   print(i)              // Rain이 출력되지 않고 1...10까지 출력됩니다. 
 }
-print(i)                // Rain이 출력됩니다. 아마 >.0)a 
+print(i)                // Rain이 출력됩니다. 
 ```
 
 # while문 / repeat-while문
@@ -61,4 +61,45 @@ print(i)                // Rain이 출력됩니다. 아마 >.0)a
 - while의 실행문에는 조건을 변화시키는 문장을 넣어야 합니다. 
 
 # 반복문의 제어전송문 (continue / break)
+
+
+
+
+
+
+
 # 연습문제 - 구구단 / 배수 / 논리 구성해서 출력해보기
+
+#### 연습문제 - 구구단
+```Swift
+for i in 1...9 {
+    for j in 1...9 {
+        print ("\(i) X \(j) = \(i*j)")
+    }
+}
+
+for i in 1...9 {
+    for j in 1...9 {
+        print (String(i) + "X" + String(j) + "=" + String(i*j))
+    }
+}
+```
+
+#### 연습문제 - 배수
+```Swift
+for i in 1...100 {
+    if i%3==0 {
+        print ("3의 배수 발견: \(i)")
+    }
+}
+```
+
+#### 연습문제 - 논리 
+```Swift
+for i in 1...5 {
+    for _ in 1...i {
+        print ("😀", terminator: "")
+    }
+    print ()
+}
+```
