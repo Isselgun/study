@@ -202,7 +202,7 @@ for i in 1...100 {
 ```
 ```Swift
 for i in 1...5 {
-    for _ in 1...i {
+    for _ in 1...i {                // _와일드카드 패턴을 사용할 수 있습니다. 
         print ("😀", terminator: "")
     }
     print ()
