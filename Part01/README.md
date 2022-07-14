@@ -151,6 +151,7 @@ let
 n
 n + 7
 n < 5
+var name1 = sayHelloString()    // return이 있는 함수의 경우
 ```
 
 #### 문장(Statement)이란 ⭐ : 
