@@ -30,7 +30,9 @@ func saySomething(name: Strig) {   // 파라미터의 이름과 타입을 정의
 ```
 - 함수의 아웃풋을 정의해 사용할 수 있습니다. -> 타입명을 사용하며 이때 return을 꼭 사용해 정의해야합니다.
 ```Swift
-func sye
+func syeHello() -> String {
+  return "아웃풋입니다"
+}
 ```
 
 # 함수의 응용
