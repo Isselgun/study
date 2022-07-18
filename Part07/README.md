@@ -113,8 +113,122 @@ numFunction(num1: 3, num2: 7)
 ```
 
 # 함수 사용시 주의점 
+#### 함수 파라미터에 대한 정확한 이해 :
+- 파라미터는 상수로 선언이 되기 때문에 변경 할 수 없습니다. 
+```Swift
+func someAdd(a: Int) -> Int {            // let a: Int 
+    a = a + 1
+    // a는 파라미터이기 때문에 변경이 불가능 합니다.
+    // 내부에서 값을 바꾸고 싶다면, 내부에서 새로운 변수 선언해야 합니다.
+    return a
+}
+```
+
+#### 함수내에서 선언한 변수의 Scope(스코프)
+- 함수내에서 선언한 변수는 함수 내에서만 사용할 수 있습니다.
+```Swift
+func sumOfNum(a: Int) -> Int {
+    var sum = 0
+    sum += a
+    return sum
+}
+
+sum
+// 함수내에서 선언한 함수임으로 사용이 불가능합니다.
+
+sumOfNum(a: 3)
+```
+
+#### return 키워드의 정확한 이해 :
+ - 1) 리턴타입이 있는 함수의 경우(아웃풋이 있는 경우):
+      리턴 키워드 다음의 표현식을 평가한 다음에 그 결과를 리턴하면서 함수를 벗어날때 사용합니다.
+ - 2) 리턴타입이 없는 함수의 경우(아웃풋이 없는 경우):
+      함수의 실행을 중지하고 함수를 벗어날때 사용합니다. ⭐️
+      
+#### 리턴타입이 있는 경우, 함수의 실행문의 의미 : 
+- 리턴 타입이 있는 함수를 호출하는 것은 표현식(표현식의 결과는 함수가 리턴하는 값)을 호출한 것이라는 것을 인지 해야합니다.
+> 표현식 : 값, 변수, 연산자의 조합으로 하나의 결과값으로 평가되는 코드 단위를 의미합니다. 
+```Swift
+if nameString() == "스티브" {
+// 함수가 리턴되어 하나의 결과값으로 사용됩니다. 
+    print("이름이 일치합니다.")
+}
+```
+
+#### 함수의 중첩 사용(Nested Functions) :
+- 함수 안에 함수를 작성할 수도 있다. 단, 함수 안에 있는 함수는 밖에서 사용이 불가능합니다. 
+- 여러개의 함수를 중첩 사용하여 함수를 제한적으로 사용하고 싶을 때 사용합니다.
+```Swift
+func chooseStepFunction(backward: Bool, value: Int) -> Int {
+    
+    func stepForward(input: Int) -> Int {
+        return input + 1
+    }
+    
+    func stepBackward(input: Int) -> Int {
+        return input - 1
+    }
+    if backward {
+        return stepBackward(input: value)
+    } else {
+        return stepForward(input: value)
+    }
+    
+}
+
+stepForward(input: 5)
+// 함수 안에 있는 함수이기 때문에 사용이 불가능!! 
+```
+
+
 # 함수의 표기법(지칭) / 함수의 타입 표기  
+#### 함수를 지칭 하는 방법 : 
+- 함수를 지칭하려는 경우 함수명(파라미터명:파라미터명:)으로 표기하여 사용합니다.
+- 파라미터가 없는 경우
+```Swift
+doSomething
+```
+- 아규먼트 레이블이 있는 경우
+```Swift
+numberPrint(n:)
+// 함수명(아규먼트레이블:)로 작성합니다. 
+```
+- 파라미터가 여러개인 경우
+```Swift
+chooseStepFunction(backward:value:)
+// 함수명(파라미터명:파라미터명:) 이때 , 쉼표를 꼭 빼서 지칭합니다.
+```
+- 아규먼트 레이블이 생략된 경우는 아래와 같이 표기합니다. 
+```Swift
+addPrintFunction(_:_:)
+```
+- 섞어서 써져있는 경우 
+```Swift
+func addPrintFunction(firstNum: Int, _ secondNum: Int, ex rraan: Int) {
+    print(firstNum + secondNum + rraan)
+}
+
+let rain = addPrintFunction(firstNum:_:ex:)
+// 파라미터:와일드카드:아규먼트레이블: 섞어서 사용가능하며 지칭도 가능합니다.
+```
+
+#### 함수의 타입 표기 : 
+- 함수도 타입 표기를 할 수 있습니다. 타입 표기시 리턴 타입을 생략해서는 안됩니다. 
+```Swift
+var function1: (Int) -> () = numberPrint(n:)
+// (Int) -> () 해당 함수의 타입을 표기한 것입니다. 
+// (Int) -> Void로 표기가 가능합니다. 단, 생략해서는 안됩니다.
+var function2: (Int, Int) -> () = addPrintFunction(_:_:)
+// (Int, Int) -> () 중첩 타입을 표기한 것입니다. 
+// (Int, Int) -> Void로 표기가 가능합니다. 단, 생략해서는 안됩니다.
+```
+
+
+
 # 함수의 오버로딩 
+
+
+
 # 범위(Scope)에 대한 이해 
 # 제어전송문 정리 
 # 함수 실행의 메모리 구조 - 1 
