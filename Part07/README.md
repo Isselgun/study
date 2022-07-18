@@ -225,12 +225,102 @@ var function2: (Int, Int) -> () = addPrintFunction(_:_:)
 
 
 
-# 함수의 오버로딩 
+# 함수의 오버로딩(overloading)
+> 오버로드(overload): 영어로 과적하다라는 뜻
 
+#### 함수의 오버로딩이란 : 
+- 같은 이름의 함수에 매개변수(파라미터)를 다르게 선언하여, 하나의 함수 이름에 실제 여러개의 함수를 대응 시키는 것입니다.
+즉, 함수의 이름을 재사용할 수 있다는 것입니다. 
+- 오버로딩이 되지 않는다면 같은 기능을 제공하는 함수를 파라미터 형식마다 이름을 다르게 구현해야하기 때문에 함수의 이름이 많아지고, 구별해서 사용하는 것이 어려워집니다.
+- Swift는 ⭐️ 함수이름, 파라미터 수/자료형, 아규먼트 레이블, 리턴형을 모두포함해서 함수를 식별합니다. 
+```Swift
+func doSomething(value: String) {
+    print(value)
+}
 
+func doSomething(_ value: String) {
+    print(value)
+}
+
+func doSomethging(value1: String, value2: Int) {
+    print(value1, value2)
+}
+
+// 같은 이름 조금 다른 함수들 
+
+doSomething(value: 5)
+doSomething(value: 3.4)
+doSomething(value: 3)
+// 사용할때는 매우 편하게 사용 가능하다! 
+```
 
 # 범위(Scope)에 대한 이해 
+#### 스코프 Scope : 
+ - 변수는 코드에서 선언이 되어야 그 이하의 코드에서 접근이 가능합니다. (전역변수는 예외)
+ - 상위스코프(범위)에 선언된 변수와 상수에 접근가능하며, 하위스코프(범위)에는 접근할 수 없다.
+ - 동일한 스코프에서 이름이 중복될 수 없지만, 다른 스코프에서는 이름 중복이 가능하다.
+ - 가장 인접한 스코프에 있는 변수와 상수에 먼저 접근 한다.
+```Swift
+func greeting1() {
+    print("Hello")
+    
+    var myName = "홍길동" 
+    print(myName)
+    
+    print(name)
+    // 상위 스코프에 접근 가능 
+    
+    if true {
+        print(myName)
+        print(name)
+    }
+}
+
+print(myName)
+// 함수 내부에 있는 변수이기 때문에 접근 할 수 없습니다. 
+// 하위 스코프에 접근 불가
+
+var name = "잡스" 
+// 전역변수로 함수 내부에서 접근 가능합니다.
+
+```
+
+- 코드는 순서대로 작동하기 때문에, 선언이 되어있어야 사용 가능하다. 
+```Swift
+func doSomething() {
+    print(realName)       
+    // 변수가 아래에 선언 되어 있기 때문에 오류가 발생합니다.  
+    var realName = "Rain"
+}
+
+doSomething()
+```
+
 # 제어전송문 정리 
+#### break :
+- switch문에서 case나 default에 실행하는 문장이 없을때, 반드시 입력해야 합니다 ⭐ 
+- 반복문(for/while 등)에서 가장 인접한 반복문을 아예 중지시킬 때 사용합니다. ⭐
+
+#### fallthrough : 
+- switch문에서 사용하며, 다음 케이스도 실행 시키고 싶을 때 사용합니다. 
+```Swift
+switch a {
+case 1:
+    print("1입니다.")
+    fallthrough
+case 2:
+    print(a)
+default:
+    break
+}
+// 1입니다.
+// 안녕하세요
+```
+
+#### continue : 
+- continue는 반복문을 다음 싸이클로 보낼때 사용합니다. 다음 싸이클에서 계속 지속(continue)하라는 의미 입니다.
+#### continue : 
+
 # 함수 실행의 메모리 구조 - 1 
 # 함수 실행의 메모리 구조 - 2 
 # 조건문과 반복문의 명령어(CPU) 구조 
