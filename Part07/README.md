@@ -107,16 +107,10 @@ func numFunction(num1: Int, num2: Int = 5) -> Int {
 }
 
 numFunction(num1: 3)
-// 기본값을 
+// 기본값을 num2: 5를 사용하여 return 8 이 됩니다.
 numFunction(num1: 3, num2: 7)
-
+// 기본값을 설정하였더라도 사용하지 않고도 사용이 가능합니다. 
 ```
-
-
-
-
-
-
 
 # 함수 사용시 주의점 
 # 함수의 표기법(지칭) / 함수의 타입 표기  
