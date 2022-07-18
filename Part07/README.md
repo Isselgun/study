@@ -84,6 +84,7 @@ addPrintFunction(1, 2)
 
 ```Swift
 func arithmeticAverage(_ numbers: Double...) -> Double {
+// 타입 Double 뒤에 점 3개를 붙인것이 가변 파라미터 입니다.
     var total = 0.0
     for n in numbers {
         total += n
@@ -91,7 +92,8 @@ func arithmeticAverage(_ numbers: Double...) -> Double {
     return total / Double(numbers.count)
 }
 
-arithmeticAverage(1.5, 2.5, 3.5, 4.5)   // 배열 형태
+arithmeticAverage(1.5, 2.5, 3.5, 4.5) 
+// 배열 형태로 여러개를 작성해도 되며 1개를 써도 됩니다.
 ```
 
 #### 함수의 기본값 설정 : 
@@ -105,10 +107,9 @@ func numFunction(num1: Int, num2: Int = 5) -> Int {
 }
 
 numFunction(num1: 3)
-// num2 기본값이 5라서 return 8
-
+// 기본값을 
 numFunction(num1: 3, num2: 7)
-// 10
+
 ```
 
 
