@@ -318,8 +318,36 @@ default:
 ```
 
 #### continue : 
-- continue는 반복문을 다음 싸이클로 보낼때 사용합니다. 다음 싸이클에서 계속 지속(continue)하라는 의미 입니다.
-#### continue : 
+- continue는 반복문을 다음 싸이클로 보낼때 사용합니다.
+
+#### return : 
+- 리턴 타입의 함수에서 리턴 키워드 다음의 표현식을 평가한다음 결과를 리턴 하면서 함수를 벗어날때 사용합니다.
+- 리턴 타입이 없는 함수에서 함수의 실행을 중지하고 함수를 벗어날때 사용합니다.
+
+#### throw : (나중의 단원에서 나옴)
+- 에러가 발생 가능하도록 정의된 함수에서 throw키워드 다음에 정의된 에러의 타입을 리턴하면서 함수를 벗어나게 할때 사용합니다.
+```Swift
+enum APIError: Error {
+    case aError
+    case bError
+}
+// 에러 케이스를 정리
+
+
+func doSomething2() throws -> String {
+    print("1")
+    print("2")
+    
+    if true {
+        throw APIError.aError    // 리턴과 동일한 역할(함수를 종료시킴) ===> 에러를 던지고 함수를 벗어남
+    }
+    
+    print("3")
+    print("4")
+    
+    return "안녕하세요"
+}
+```
 
 # 함수 실행의 메모리 구조 - 1 
 # 함수 실행의 메모리 구조 - 2 
