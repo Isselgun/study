@@ -51,15 +51,72 @@ func plusFuntion(a: Int, b: Int) -> Int {
 var hello: Void = sayhello1()   // 리턴이 없지만 Void타입이 리턴됨으로 변수에 Void으로 담을 수 있습니다.
                                 // 하지만 이렇게 사용하는 경우는 없습니다 ㅎㅎ 
 ```
-
-
-
-
-
-
-
+     
+ 
 
 # 함수의 응용
+#### 아규먼트 레이블 이란 : 
+- 일반적으로 함수를 사용할때 더 명확하게 무엇을 요구하는 지 알려주고 간단하게 사용하기 위해 사용합니다. 
+- 함수명(아규먼트레이블 파라미터: 아규먼트) 형식으로 사용합니다. 
+```Swift
+func someFunction1(writeYourFirstNumber a:Int, writeYourSecondNumber b: Int) {
+    print(a + b)
+}
+
+someFunction1(writeYourFirstNumber: 3, writeYourSecondNumber: 4) //아규먼트 레이블: 값
+```
+- 와일드 카드 패턴을 사용하여 아규먼트 레이블을 생략해서 사용할 수 있습니다. 
+함수를 명확하게 알고 있을때 빠르고 쉽게 사용하기 위해 사용합니다. 
+```Swift
+func addPrintFunction(_ firstNum: Int, _ secondNum: Int) {
+    print(firstNum + secondNum)
+}
+
+addPrintFunction(1, 2)
+```
+
+#### 가변 파라미터 : 
+- 파라미터의 타입에 ...을 이용하여 가변 파라미터로 선언 할 수 있습니다. 
+- 가변파라미터는 아래의 내용을 지켜서 사용해야합니다.
+> 1) 아규먼트는 배열형태로 전달됩니다. 
+> 2) 가변 파라미터는 개별함수마다 하나씩만 선언할 수 있습니다.
+> 3) 가변 파라미터는 기본값을 가질 수 없다.
+
+```Swift
+func arithmeticAverage(_ numbers: Double...) -> Double {
+    var total = 0.0
+    for n in numbers {
+        total += n
+    }
+    return total / Double(numbers.count)
+}
+
+arithmeticAverage(1.5, 2.5, 3.5, 4.5)   // 배열 형태
+```
+
+#### 함수의 기본값 설정 : 
+- 함수에 기본값을 설정하여 일부의 아규먼트를 생략하더라도 사용할 수 있습니다.
+```Swift
+func numFunction(num1: Int, num2: Int = 5) -> Int {
+// num2의 데이터 타입은 정수임으로 기본값으로 정수를 넣습니다.
+// 함수 실행할 때 숫자 주지 않으면 5를 쓰겠다는 의미입니다.
+    var result = num1 + num2
+    return result
+}
+
+numFunction(num1: 3)
+// num2 기본값이 5라서 return 8
+
+numFunction(num1: 3, num2: 7)
+// 10
+```
+
+
+
+
+
+
+
 # 함수 사용시 주의점 
 # 함수의 표기법(지칭) / 함수의 타입 표기  
 # 함수의 오버로딩 
